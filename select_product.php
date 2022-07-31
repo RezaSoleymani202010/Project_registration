@@ -1,4 +1,4 @@
-php<div style="display: inline">
+<div style="display: inline">
 
 </div>
 <form method="post" action="open_activity.php">

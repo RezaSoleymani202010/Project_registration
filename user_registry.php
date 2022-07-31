@@ -1,7 +1,14 @@
 <?php
 include "_load.php";
 echo "this is registry";
-
+if (isset($_POST['user_name'],$_POST['email'],$_POST['password'])) {
+    $user_name = $_POST['user_name'];
+    $email = $_POST['email'];
+    $password = $_POST['password'];
+    $user_id = user_register($user_name, $email, $password);
+    $_SESSION['user_id'] = $user_id['id'];
+    redirect("index.php");
+}
 ?>
 
 <html lang="en">
@@ -28,7 +35,7 @@ echo "this is registry";
 
                             <h2 class="fw-bold mb-2 text-uppercase">Registry</h2>
                             <p class="text-white-50 mb-5">Please enter your information to registry</p>
-                            <form method="POST" action="index.php">
+                            <form method="POST" action="">
                                 <div class="form-outline form-white mb-4">
                                     <input name="user_name" type="text" id="typeEmailX"
                                            class="form-control form-control-lg" placeholder="User_name "/>
@@ -47,7 +54,7 @@ echo "this is registry";
 
                                 <!--                            <p class="small mb-5 pb-lg-2"><a class="text-white-50" href="#!">Forgot password?</a></p>-->
 
-                                <button name="submit" class="btn btn-outline-light btn-lg px-5" type="submit">Login
+                                <button name="submit" class="btn btn-outline-light btn-lg px-5" type="submit">Save
                                 </button>
                                 <div name="errorMsg">
                                     <br>

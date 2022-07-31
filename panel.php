@@ -2,10 +2,35 @@
 require "_load.php";
 auth_check();
 global $user;
-var_dump($_GET);
+$activities=get_activities();
+$reports=get_reports($_SESSION['user_id']);
+$sum_ex_h=0;
+$sum_ex_m=0;
+foreach ($reports as $report){
+  $ex_time=explode( ":",$report['extra_time']);
+  $ex_h=intval($ex_time[0]);
+  $ex_m=intval($ex_time[1]);
+  $sum_ex_h+=$ex_h;
+  $sum_ex_m+=$ex_m;
+}
+$sum_EX_H=$sum_ex_h+($sum_ex_m/60);
+$sum_EX_H=intval($sum_EX_H);
+$sum_EX_M=$sum_ex_m%60;
+$sum_EX_M=intval($sum_EX_M);
+$a=array($sum_EX_H,$sum_EX_M);
+$sum_time=implode(":",$a);
+var_dump($sum_time);
 if(isset($_GET['project'])) {
     $project_flag = 1;
 $products=get_products($_GET['project']);
+if (get_project($_GET['project'])==null){
+    redirect("panel.php");
+}else{
+    if ($products==null){
+
+        redirect("panel.php");
+    }
+}
 }
 ?>
 
@@ -49,6 +74,9 @@ else
     include "select_product.php";
 
 ?>
+
+
+
 <!---->
 
 
@@ -56,6 +84,56 @@ else
 
 </div>
 </body>
+
+
+
+
+
+    <table class="activity_table">
+        <tr>
+            <th>Project</th>
+            <th>Product</th>
+            <th>activity</th>
+            <th>Normal Time</th>
+            <th>Extra_time</th>
+        </tr>
+
+
+
+
+        <?php foreach ($reports as $report){ ?>
+
+            <tr>
+                <td>
+                    <?=$report['project_id']?>
+                </td>
+                <td><?=$report['product_id']?></td>
+                <td>
+                    <?=$report['activity_id'] ?>
+
+                </td>
+                <td>
+                    <?=$report['normal_time']?>
+
+                </td>   <td>
+                    <?=$report['extra_time'] ?>
+
+                </td>
+            </tr>
+        <?php } ?>
+    </table>
+    <input name="save" value="Save" type="submit" class="sub_btn">
+
+
+
+
+
+
+
+
+
+
+
 
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>

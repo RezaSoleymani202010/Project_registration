@@ -29,7 +29,7 @@ echo "product:".$product."<br>";
 <!--    <span>a</span>-->
 <!--    <span>a</span>-->
 <!--    <span>a</span>-->
-    <form method="post" action="report.php">
+    <form method="post" action="save_report.php">
         <input name="product_id" type="hidden" value="<?=$product_id ?>">
     <table class="activity_table">
         <tr>
@@ -69,7 +69,7 @@ echo "product:".$product."<br>";
         </tr>
   <?php } ?>
     </table>
-        <input value="Save" type="submit" class="sub_btn">
+        <input name="save" value="Save" type="submit" class="sub_btn">
     </form>
 </div>
 </label>
