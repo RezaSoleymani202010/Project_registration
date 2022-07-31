@@ -1,0 +1,36 @@
+.activity_div{
+
+    text-align: center;
+   /*border-style: solid;*/
+    margin-top: 50px;
+    height: 500px;
+
+}
+.activity_table{
+width: 700px;
+    background-color: #4b3920;
+    margin-left: 25%;
+    /*margin-top: 15px;*/
+    border-style: dashed;
+    text-align: center;
+}
+.activity_table th{
+    background-color: antiquewhite;
+    margin: 20px;
+    height: 45px;
+}
+.activity_table td{
+    background-color: aqua;
+    margin: 10px;
+    height: 45px;
+}
+.sub_btn{
+    margin: 25px;
+    width:130px;
+    color: #340202;
+    font-family: Algerian;
+    font-weight: bold;
+    background-color: #92e5e3;
+font-size: x-large;
+height: 50px;
+}
