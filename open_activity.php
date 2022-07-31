@@ -1,5 +1,8 @@
 <?php
 include"_load.php";
+if(!isset($_POST['product'])){
+    redirect("panel.php");
+}
 $product_id=$_POST['product'];
 $product=get_product($product_id)['name'];
 $project_id=get_product($product_id)['project_id'];

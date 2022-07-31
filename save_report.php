@@ -1,5 +1,6 @@
 <?php
 require "_load.php";
+
 $activities=get_activities();
 $normal_time=$_POST['normal_time'];
 $extra_time=$_POST['extra_time'];
